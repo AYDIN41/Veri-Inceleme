@@ -22,12 +22,19 @@ b = b.reindex(index=b.index[::-1])
 c = c.reindex(index=c.index[::-1])
 print(b)
 
-fig = plt.figure(figsize=(20,10))
+fig = plt.figure(figsize=(20,10),dpi=400)
 
+labels = [item.get_text() for item in ax.get_xticklabels()]
+
+ax.set_xticklabels(labels)
 ax = fig.add_axes([0,0,1,1])
 
 ax.plot(a,c,color = "purple",label = "Aylık % Değişim",lw=4,ls = ":")
 ax.plot(a,b,color = "red",label = "Yıllık % Değişim",lw=4,ls = "--")
+plt.bar(a, c, color=(0.2, 0.4, 0.6, 0.6))
+plt.bar(a, b, color=(0.5, 0.3, 0.7, 0.4))
+plt.tick_params(labelbottom=False)
+ax.legend(loc = 0)
 
 fig,axes = plt.subplots(nrows=2,ncols=1,figsize=(9,7),dpi=150)
 
