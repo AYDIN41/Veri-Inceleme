@@ -1,0 +1,30 @@
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv("mpg.csv")
+print(df)
+print(df.info())
+print(df["model_year"].count())
+print(df["model_year"].nunique()) #unique olan değerlerin kaç tane olduğunu söyler
+print(df["model_year"].unique())
+print(df["model_year"].value_counts())
+print(df.groupby("model_year").max())
+#print(df.groupby("cylinders").max())
+print(df.groupby("model_year").mean()["cylinders"])
+#print(df.groupby("model_year").mean()["horsepower"])
+print(df.groupby("origin").mean())
+print(df.groupby("weight").sum())
+print(df.groupby(["model_year","cylinders"]).mean())
+print(df.groupby(["model_year","horsepower"]).mean())
+print(df.groupby(["model_year"]).describe())
+print(df.groupby(["model_year"]).describe().transpose())
+
+yearCyl = df.groupby(["model_year","cylinders"]).mean()
+print(yearCyl)
+print(yearCyl.index.names)
+print(yearCyl.index.levels)
+print(yearCyl.loc[70])
+print(yearCyl.iloc[::3])
+print(yearCyl.loc[(70,4)])
+print(df.groupby("weight").sum())
+print(df.groupby("model_year").mean())
